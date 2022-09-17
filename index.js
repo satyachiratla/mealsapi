@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mealRoutes = require('./routes/meals');
 const db = require('./DataBase/db');
 require("dotenv").config();
+const path = require('path');
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use('/', mealRoutes)
+app.use('/', mealRoutes);
+
+app.use(express.static(path.join(__dirname + '/public')));
 
 app.listen(process.env.PORT || 8080)
