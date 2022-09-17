@@ -9,6 +9,8 @@ const app = express();
 
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT || 8080;
+
 db().then(() => console.log('Db connected'))
 
 app.use((req, res, next) => {
@@ -20,6 +22,6 @@ app.use((req, res, next) => {
 
 app.use('/', mealRoutes);
 
-app.use(express.static(path.join(__dirname + '/public')));
+// app.use(express.static(path.join(__dirname + '/public')));
 
-app.listen(process.env.PORT || 8080)
+app.listen(PORT);
