@@ -20,3 +20,9 @@ exports.postmeals = async (req, res, next) => {
     console.log(err.message);
   }
 };
+
+
+exports.deletemeals = async (req, res, next) => {
+  let data = await Meals.deleteOne(req.params);
+  res.send(data)
+}
